@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Playwright/test artifacts
+.playwright-mcp/
+*-test.png
+prod-*.png
+
+# Local source files (label PDFs, design mockups) — not deployed
+*.pdf
+
+# Claude Code local config
+.claude/
