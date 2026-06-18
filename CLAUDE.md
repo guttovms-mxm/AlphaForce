@@ -4,7 +4,7 @@ Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, s
 
 **Dev server:** VSCode Live Server. Abrir qualquer `index.html` da raiz.
 
-> **Origem:** clone do [SolidusMax](https://github.com/guttovms-mxm/SolidusMax), reduzido a **apenas o funil DigiStore (`dg/`)** e **sem AWS/cloaking**. Os funis CartPanda (`cpda/`), o cloaking HMAC (`p/`) e toda a infra AWS (`infra/`, GitHub Actions de deploy) foram removidos.
+> **Escopo:** apenas o funil DigiStore (`dg/`), **sem AWS e sem cloaking**. Não há funis CartPanda (`cpda/`), cloaking HMAC (`p/`) nem infra AWS (`infra/`, GitHub Actions de deploy).
 
 ## Estrutura
 
@@ -21,8 +21,8 @@ assets/
   fav.png
   shared/css/  # cb-main.css, internal-pages.css
   shared/js/   # vturb.js, purchase-notifications.js, countdown.js, kits02.js, cpda-parameters.js, funnel-tracking.js
-  shared/products/  # bottles-{2,3,6,9,12}.png + small versions + label.png + cards
-  shared/img/  # logo.png
+  shared/products/  # bottles-{2,3,6,12}.webp + small versions (2/3/6) + label.webp + cards
+  shared/img/  # guarantee-badge.webp
   vendor/      # Bootstrap 5 vendorado (não-CDN)
 index.html     # Redirect → /dg/dtc/
 ```
@@ -63,14 +63,12 @@ Todos os IDs reais de VSL e DigiStore foram substituídos por placeholders. Busc
 | `PLACEHOLDER_DG_BADGE_SALES_ID` / `PLACEHOLDER_DG_BADGE_SALES_HASH` | Badge `salespage` (vsl, dtc, upsell1, downsell1, downsell2) |
 | `PLACEHOLDER_DG_BADGE_THANKYOU_ID` / `PLACEHOLDER_DG_BADGE_THANKYOU_HASH` | Badge `thankyoupage` (thankyou) |
 
-## Pendências de branding (não eram VSL/DigiStore — herdadas do SolidusMax)
+## Pendências de branding (não eram VSL/DigiStore)
 
-- **Nome da marca**: `SolidusMax`/`SOLIDUSMAX`/keyword `solidusmax` já foram todos trocados por `AlphaBull` no copy, meta tags, textos legais e na chave de localStorage (`alphabull_cta_displayed`). Sem resíduos de SolidusMax no código.
-- **Domínio**: AlphaBull ainda não tem domínio. `canonical`, `og:url`, `og:image`/`twitter:image` e paths absolutos usam o placeholder **`PLACEHOLDER_DOMAIN`** (ex: `https://PLACEHOLDER_DOMAIN/dg/dtc/`) — preencher quando o domínio existir.
+- **Domínio**: as URLs já usam `alphabull.shop` (`canonical`, `og:url`, `og:image`/`twitter:image` e paths absolutos).
 - **E-mail de suporte**: `contact@alphabull.shop` (em `mailto:` e texto das páginas de suporte/legais).
-- `logo.png` (header) e os mockups de **9/12 potes** (upsell/downsell) ainda são imagens do SolidusMax — trocar por arte do AlphaBull. O label do footer e os potes de 2/3/6 já são AlphaBull.
+- **Imagens de produto**: bottles de 2/3/6/12 potes e o `label.webp` já são arte AlphaBull. Upsell/downsell usam os mockups de 6 e 12 potes.
 - **Paleta CSS** (em `:root` de [assets/shared/css/cb-main.css](assets/shared/css/cb-main.css)): primária `#072245` (navy), secundária/acento `#BC9631` (dourado), apoio `#203E66` (azul médio); neutros `#CECDD0` / `#C8C7CB` / `#B6B8BD`. CTAs de compra usam o gradiente dourado.
-- As fontes do Bootstrap Icons (`assets/vendor/bootstrap/fonts/bootstrap-icons.woff2`/`.woff`) e os assets `guarantee-badge.png`, `badges/certifications.png` e `dynamic-upsell.js` foram restaurados do BurnForce (vinham faltando no SolidusMax de origem).
 
 ## Scripts compartilhados (`assets/shared/js/`)
 
