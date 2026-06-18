@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Site estático HTML/CSS/JS para **AlphaForce**. Sem build tools, sem framework, sem package manager — JS vanilla servido por paths relativos.
+Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, sem package manager — JS vanilla servido por paths relativos.
 
 **Dev server:** VSCode Live Server. Abrir qualquer `index.html` da raiz.
 
@@ -65,10 +65,10 @@ Todos os IDs reais de VSL e DigiStore foram substituídos por placeholders. Busc
 
 ## Pendências de branding (não eram VSL/DigiStore — herdadas do SolidusMax)
 
-- **Nome da marca**: `SolidusMax`/`SOLIDUSMAX`/keyword `solidusmax` já foram todos trocados por `AlphaForce` no copy, meta tags, textos legais e na chave de localStorage (`alphaforce_cta_displayed`). Sem resíduos de SolidusMax no código.
-- **Domínio**: AlphaForce ainda não tem domínio. `canonical`, `og:url`, `og:image`/`twitter:image` e paths absolutos usam o placeholder **`PLACEHOLDER_DOMAIN`** (ex: `https://PLACEHOLDER_DOMAIN/dg/dtc/`) — preencher quando o domínio existir.
-- **E-mail de suporte**: `contactmrxx2@gmail.com` (em `mailto:` e texto das páginas de suporte/legais).
-- `logo.png` (header) e os mockups de **9/12 potes** (upsell/downsell) ainda são imagens do SolidusMax — trocar por arte do AlphaForce. O label do footer e os potes de 2/3/6 já são AlphaForce.
+- **Nome da marca**: `SolidusMax`/`SOLIDUSMAX`/keyword `solidusmax` já foram todos trocados por `AlphaBull` no copy, meta tags, textos legais e na chave de localStorage (`alphabull_cta_displayed`). Sem resíduos de SolidusMax no código.
+- **Domínio**: AlphaBull ainda não tem domínio. `canonical`, `og:url`, `og:image`/`twitter:image` e paths absolutos usam o placeholder **`PLACEHOLDER_DOMAIN`** (ex: `https://PLACEHOLDER_DOMAIN/dg/dtc/`) — preencher quando o domínio existir.
+- **E-mail de suporte**: `contact@alphabull.shop` (em `mailto:` e texto das páginas de suporte/legais).
+- `logo.png` (header) e os mockups de **9/12 potes** (upsell/downsell) ainda são imagens do SolidusMax — trocar por arte do AlphaBull. O label do footer e os potes de 2/3/6 já são AlphaBull.
 - **Paleta CSS** (em `:root` de [assets/shared/css/cb-main.css](assets/shared/css/cb-main.css)): primária `#072245` (navy), secundária/acento `#BC9631` (dourado), apoio `#203E66` (azul médio); neutros `#CECDD0` / `#C8C7CB` / `#B6B8BD`. CTAs de compra usam o gradiente dourado.
 - As fontes do Bootstrap Icons (`assets/vendor/bootstrap/fonts/bootstrap-icons.woff2`/`.woff`) e os assets `guarantee-badge.png`, `badges/certifications.png` e `dynamic-upsell.js` foram restaurados do BurnForce (vinham faltando no SolidusMax de origem).
 
