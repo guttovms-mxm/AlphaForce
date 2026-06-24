@@ -40,9 +40,9 @@ index.html     # Redirect → /dg/dtc/
 | `PLACEHOLDER_CP_CHECKOUT_KIT1/2/3` | `cpda/dtc` + `cpda/vsl` (`href` dos botões) | URL de checkout CartPanda por kit (2/3/6 potes) |
 | `PLACEHOLDER_CP_UPSELL_ACCEPT` / `PLACEHOLDER_CP_UPSELL_DECLINE` | `cpda/dtc/upsell1` | Links aceitar/recusar do upsell |
 | `PLACEHOLDER_CP_DOWNSELL_ACCEPT` / `PLACEHOLDER_CP_DOWNSELL_DECLINE` | `cpda/dtc/downsell1` | Links aceitar/recusar do downsell |
-| `PLACEHOLDER_CP_TRACKING_SCRIPT` | `cpda/dtc` + `cpda/vsl` (comentário no `<head>`) | Onde entra o pixel/script de tracking do CartPanda |
-| `PLACEHOLDER_CP_UPSELL_SCRIPT` | `cpda/dtc/upsell1` + `downsell1` (comentário) | Onde entra o script de one-click upsell do CartPanda |
 | `PLACEHOLDER_CP_DESCRIPTOR` | `cpda/thankyou` (JS de cobrança) | Descritor da fatura (substitui o token `DIGISTORE24`) |
+
+> Script do CartPanda já incluído no `<head>` das 5 páginas: `cpsales.js` (`https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cpsales.js`).
 
 > ⚠️ **Fluxo de upsell/downsell**: o one-click do CartPanda funciona diferente do `digistoreUpsell()`/`/answer/yes` do Digistore — as páginas foram replicadas estruturalmente, mas a lógica one-click precisa ser configurada no painel do CartPanda. O parsing de pedido da `thankyou` também é específico do Digistore e precisa adaptação para CartPanda.
 
