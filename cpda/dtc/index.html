@@ -60,12 +60,15 @@
 			line-height: 60px;
 			margin-bottom: 10px;
 		}
+		/* Hide the player's own CTA button — content reveal is driven by vturb.js */
+		.smartplayer-anchor-button { opacity: 0 !important; pointer-events: none !important; position: absolute !important; left: -9999px !important; }
 	</style>
 	<!-- END Main Styles -->
 
 	<!-- Main Scripts -->
 	<script type="text/javascript" src="../../assets/shared/js/purchase-notifications.js" defer></script>
 	<script type="text/javascript" src="../../assets/shared/js/countdown.js" defer></script>
+	<script type="text/javascript" src="../../assets/shared/js/vturb.js" defer></script>
 	<!-- Main Scripts -->
 
 
@@ -107,6 +110,9 @@
 		</div>
 	</section>
 	<!-- VSL Player -->
+
+	<!-- Hidden until the VSL CTA button appears (revealed by vturb.js) -->
+	<div class="esconder">
 
 	<!-- CTA Lander -->
 	<section class="py-4 products">
@@ -231,6 +237,8 @@
 			</div>
 		</section>
 	<!-- Guarantee -->
+	</div>
+	<!-- END hidden content -->
 
 	<!-- Purchase Notifications -->
 	<div id="purchase-notifications" class="purchases-disclaimer">
