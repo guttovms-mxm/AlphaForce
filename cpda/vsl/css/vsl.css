@@ -68,6 +68,7 @@ ul.strip3-list li {
     color: #fff;
     text-align: center;
     list-style: none;
+    white-space: nowrap;
 }
 
 ul.strip3-list li::after {
