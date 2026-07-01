@@ -12,7 +12,7 @@ Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, s
 
 ```
 dg/            # Funil DigiStore — vsl/ + dtc/ + thankyou, sem presell
-  vsl/         # Video Sales Letter (player Vturb) + assets locais (img/, css/)
+  vsl/         # Video Sales Letter (sem player) + assets locais (img/, css/)
   dtc/         # Direct-to-checkout
     upsell1/   # Upsell pós-compra
     downsell1/ # Downsell
@@ -22,7 +22,7 @@ lgl/           # 7 páginas legais (privacy/terms/refund/shipping/disclaimer/ref
 assets/
   fav.png
   shared/css/  # cb-main.css, internal-pages.css
-  shared/js/   # vturb.js, purchase-notifications.js, countdown.js, kits02.js, cpda-parameters.js, funnel-tracking.js
+  shared/js/   # purchase-notifications.js, countdown.js, kits02.js, cpda-parameters.js, funnel-tracking.js
   shared/products/  # bottles-{2,3,6,12}.webp + small versions (2/3/6) + label.webp + cards
   shared/img/  # guarantee-badge.webp
   vendor/      # Bootstrap 5 vendorado (não-CDN)
@@ -48,14 +48,9 @@ index.html     # Redirect → /dg/dtc/
 
 ## ⚠️ Placeholders a preencher
 
-Todos os IDs reais de VSL e DigiStore foram substituídos por placeholders. Buscar por `PLACEHOLDER_` e preencher antes de publicar.
+Todos os IDs reais de DigiStore foram substituídos por placeholders. Buscar por `PLACEHOLDER_` e preencher antes de publicar.
 
-### VSL (Vturb) — em `dg/vsl/index.html`
-
-| Placeholder | O que é |
-|-------------|---------|
-| `PLACEHOLDER_VSL_PLAYER_ID` | ID do player Vturb (usado em `VSL_WHITE_ID` e `VSL_BLACK_ID`) |
-| `PLACEHOLDER_VSL_ACCOUNT_ID` | `VSL_ACCOUNT_ID` (conta Vturb/ConverteAI) |
+> As VSLs não têm mais player de vídeo (Vturb/ConverteAI removido); a oferta é exibida direto, sem gating.
 
 ### DigiStore — product IDs (URLs `checkout-ds24.com` + `digistorePromocode`)
 
@@ -91,7 +86,6 @@ Todos os IDs reais de VSL e DigiStore foram substituídos por placeholders. Busc
 
 | Script | Função |
 |--------|--------|
-| `vturb.js` | Detecta CTA do player Vturb (poll `.smartplayer-anchor-button` a cada 500ms), revela `.esconder` quando visível |
 | `purchase-notifications.js` | Pop-ups de "compra recente" (nomes/locations randoms). Usa paths absolutos (`/assets/...`) |
 | `kits02.js` | Seleção de kit, persiste em localStorage |
 | `cpda-parameters.js` | Propaga query params da URL pros links de checkout |
@@ -102,7 +96,6 @@ Todos os IDs reais de VSL e DigiStore foram substituídos por placeholders. Busc
 
 - **Profundidade de path** importa: `dg/vsl/index.html` usa paths absolutos (`/assets/...`). Scripts compartilhados que injetam HTML usam path absoluto.
 - **Bootstrap 5** vendorado em `assets/vendor/bootstrap/` (não usar CDN).
-- **Erros de Vturb em localhost** são esperados (CORS, license) — só funciona em produção com o domínio real.
 
 ## Deploy
 
