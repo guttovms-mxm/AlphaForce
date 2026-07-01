@@ -176,7 +176,7 @@ img.hourglass {
 
 .shipbx {
     width: 710px;
-    height: 90px;
+    min-height: 90px;
     border: 2px solid var(--secondary-color);
     border-radius: 14px;
     margin: 0 auto 0 auto;
@@ -194,6 +194,9 @@ img.hourglass {
     position: absolute;
     left: 0;
     top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
 }
 
 .shipiconbx img {
@@ -206,7 +209,8 @@ img.hourglass {
     content: "";
     position: absolute;
     right: -15px;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     width: 0;
     height: 0;
     border-top: 45px solid transparent;
