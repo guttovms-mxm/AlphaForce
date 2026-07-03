@@ -13,8 +13,10 @@ Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, s
 ```
 dg/            # Funil DigiStore — vsl/ + dtc/ + thankyou, sem presell
   vsl/         # Video Sales Letter (sem player) + assets locais (img/, css/)
+    upsell01/  # Upsell pós-compra do funil VSL (12 potes — $348)
   dtc/         # Direct-to-checkout
-    upsell1/   # Upsell pós-compra
+    upsell1/   # Upsell pós-compra (12 potes — $348)
+    upsell01/  # Idem upsell1 — URL própria p/ config no DigiStore
     downsell1/ # Downsell
   thankyou/    # Thank-you page
 cpda/          # Funil CartPanda — réplica de dg/ sem Digistore24 (mesma estrutura)
