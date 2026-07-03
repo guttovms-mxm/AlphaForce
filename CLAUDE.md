@@ -14,10 +14,12 @@ Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, s
 dg/            # Funil DigiStore — vsl/ + dtc/ + thankyou, sem presell
   vsl/         # Video Sales Letter (sem player) + assets locais (img/, css/)
     upsell01/  # Upsell pós-compra do funil VSL (12 potes — $348)
+    downsell01/# Downsell do funil VSL (6 potes — $174)
   dtc/         # Direct-to-checkout
     upsell1/   # Upsell pós-compra (12 potes — $348)
     upsell01/  # Idem upsell1 — URL própria p/ config no DigiStore
-    downsell1/ # Downsell
+    downsell1/ # Downsell (6 potes — $205.80)
+    downsell01/# Downsell (6 potes — $174)
   thankyou/    # Thank-you page
 cpda/          # Funil CartPanda — réplica de dg/ sem Digistore24 (mesma estrutura)
 lgl/           # 7 páginas legais (privacy/terms/refund/shipping/disclaimer/references/contact) — compartilhadas
@@ -67,6 +69,7 @@ Todos os IDs reais de DigiStore foram substituídos por placeholders. Buscar por
 | `PLACEHOLDER_DG_DOWNSELL_1` | Downsell1 — 6 bottles | kit1 |
 | `PLACEHOLDER_DG_DOWNSELL_2` | Downsell1 — 9 bottles | kit2 |
 | `PLACEHOLDER_DG_DOWNSELL_3` | Downsell1 — 12 bottles | kit3 |
+| `PLACEHOLDER_DG_DOWNSELL01` | Downsell01 — 6 bottles $174 ($29/pote) | `dg/vsl/downsell01` + `dg/dtc/downsell01` |
 
 > Downsell2 usa só `answer/yes?template=light` (sem product id).
 
