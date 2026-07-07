@@ -10,11 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta charset="utf-8">
 
-	<!-- GoogleFonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-	<!-- END GoogleFonts -->
+	<!-- Fonts (self-hosted Inter) -->
+	<link rel="stylesheet" type="text/css" href="../../assets/vendor/fonts/inter.css">
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap/bootstrap.min.css">
@@ -173,8 +170,8 @@
 			let popUpContainer = document.getElementById("pop-up-notifications");
 
 			// Clear previous content to avoid duplication
-			billingTextContainer.innerHTML = "";
-			emailTextContainer.innerHTML = "";
+			billingTextContainer.replaceChildren();
+			emailTextContainer.replaceChildren();
 
 			response.forEach((order, index) => {
 				let orderData = Array.isArray(order.orderData) ? order.orderData : [order.orderData];
@@ -194,14 +191,26 @@
 							return;
 						}
 
-						let recurringNote = "";
+						const billingLine = document.createElement("span");
+						billingLine.style.color = "red";
+						billingLine.textContent = `$${amount} PLACEHOLDER_CP_DESCRIPTOR*${SKU}`;
+						billingTextContainer.appendChild(billingLine);
+
 						if (recurring === "true") {
-							recurringNote = " <em><i>*This is a recurring product. **The amount includes fees subject to change based on the consumer's location and rate adjustments. If you wish to cancel this product trial, please visit our customer service website to cancel your order.</i></em>";
+							const note = document.createElement("em");
+							const noteItalic = document.createElement("i");
+							noteItalic.textContent = " *This is a recurring product. **The amount includes fees subject to change based on the consumer's location and rate adjustments. If you wish to cancel this product trial, please visit our customer service website to cancel your order.";
+							note.appendChild(noteItalic);
+							billingTextContainer.appendChild(note);
 						}
+						billingTextContainer.appendChild(document.createElement("br"));
 
-						billingTextContainer.innerHTML += `<span style="color:red">$${amount} PLACEHOLDER_CP_DESCRIPTOR*${SKU}</span>${recurringNote}<br>`;
-
-						emailTextContainer.innerHTML = `Receipts for this purchase have been sent to <b>${email}</b><br>`;
+						emailTextContainer.replaceChildren();
+						emailTextContainer.appendChild(document.createTextNode("Receipts for this purchase have been sent to "));
+						const emailBold = document.createElement("b");
+						emailBold.textContent = email;
+						emailTextContainer.appendChild(emailBold);
+						emailTextContainer.appendChild(document.createElement("br"));
 					} else {
 						console.warn(`No SALE transaction found for order index ${index}, subIndex ${subIndex}.`);
 					}
@@ -209,7 +218,7 @@
 			});
 
 			// Show the pop-up if at least one order exists
-			if (billingTextContainer.innerHTML.trim() !== "") {
+			if (billingTextContainer.childNodes.length > 0) {
 				popUpContainer.style.display = "block";
 			}
 
