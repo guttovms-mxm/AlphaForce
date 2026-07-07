@@ -74,7 +74,7 @@ Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24
 ## Pendências de branding (não eram VSL/DigiStore)
 
 - **Domínio**: as URLs já usam `alphabull.shop` (`canonical`, `og:url`, `og:image`/`twitter:image` e paths absolutos).
-- **E-mail de suporte**: `support@cartpanda.com` em todas as páginas (`mailto:` e texto das páginas de suporte/legais) — exigência de compliance da CartPanda. Não há logos de instituições/mídia nas páginas (NIH/Johns Hopkins/UCSF removidos pela mesma exigência).
+- **E-mail de suporte**: `contact@alphabull.shop` em `dg/` e `lgl/` (todas as páginas têm `mailto:`); `cpda/` mantém `support@cartpanda.com` (exigência de compliance da CartPanda). ⚠️ `lgl/` é compartilhado — o funil CartPanda linka para páginas legais que exibem o e-mail alphabull. Não há logos de instituições/mídia nas páginas (NIH/Johns Hopkins/UCSF removidos por exigência da CartPanda).
 - **Imagens de produto**: bottles de 2/3/6/12 potes e o `label.webp` já são arte AlphaBull. Upsell/downsell usam os mockups de 6 e 12 potes.
 - **Paleta CSS** (em `:root` de [assets/shared/css/cb-main.css](assets/shared/css/cb-main.css)): primária `#072245` (navy), secundária/acento `#BC9631` (dourado), apoio `#203E66` (azul médio); neutros `#CECDD0` / `#C8C7CB` / `#B6B8BD`. CTAs de compra usam o gradiente dourado.
 
