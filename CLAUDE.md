@@ -52,36 +52,24 @@ index.html     # Redirect → /dg/dtc/
 
 > ⚠️ **Fluxo de upsell/downsell**: o one-click do CartPanda funciona diferente do `digistoreUpsell()`/`/answer/yes` do Digistore — as páginas foram replicadas estruturalmente, mas a lógica one-click precisa ser configurada no painel do CartPanda. O parsing de pedido da `thankyou` também é específico do Digistore e precisa adaptação para CartPanda.
 
-## ⚠️ Placeholders a preencher
+## DigiStore — IDs e links (preenchidos, funil `dg/` live-ready)
 
-Todos os IDs reais de DigiStore foram substituídos por placeholders. Buscar por `PLACEHOLDER_` e preencher antes de publicar.
+Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24 (2026-07) já estão aplicados:
 
-> As VSLs não têm mais player de vídeo (Vturb/ConverteAI removido); a oferta é exibida direto, sem gating.
+| ID/link | Oferta | Onde |
+|---------|--------|------|
+| `checkout-ds24.com/product/709132` | Main — 2 bottles | kit1 (`dg/vsl` + `dg/dtc`) |
+| `checkout-ds24.com/product/709135` | Main — 3 bottles | kit2 (também é o `product_id` do `digistorePromocode`) |
+| `checkout-ds24.com/product/709137` | Main — 6 bottles | kit3 |
+| `checkout-ds24.com/answer/yes?template=light` | Botão YES (sem product id — 1 produto por página, o produto vem da config do funil no painel Digistore) | todas as páginas de upsell/downsell de `dg/` |
+| `digistore24.com/answer/no` | Link NO THANKS | todas as páginas de upsell/downsell de `dg/` |
 
-### DigiStore — product IDs (URLs `checkout-ds24.com` + `digistorePromocode`)
+- `digistorePromocode({ product_id: 709135, adjust_all_urls: true, adjust_domain: true })` no `<head>` das duas páginas de venda (`dg/vsl`, `dg/dtc`) — código obrigatório da Digistore.
+- `digistore.js` + `digistoreUpsell()` no `<head>` de todas as páginas de upsell/downsell.
+- Afiliados usam os GET params `aff` (ID Digistore24) e `cam` (campanha) na página de vendas.
+- A thank-you tem nota explícita de que a cobrança aparece como **DIGISTORE24** na fatura (exigência da Digistore).
 
-| Placeholder | Oferta | Kit |
-|-------------|--------|-----|
-| `PLACEHOLDER_DG_PRODUCT_1` | Main — 2 bottles | kit1 (também usado no `product_id` do promopixel) |
-| `PLACEHOLDER_DG_PRODUCT_2` | Main — 3 bottles | kit2 |
-| `PLACEHOLDER_DG_PRODUCT_3` | Main — 6 bottles | kit3 |
-| `PLACEHOLDER_DG_UPSELL_1` | Upsell1 — 6 bottles | kit1 |
-| `PLACEHOLDER_DG_UPSELL_2` | Upsell1 — 9 bottles | kit2 |
-| `PLACEHOLDER_DG_UPSELL_3` | Upsell1 — 12 bottles | kit3 |
-| `PLACEHOLDER_DG_DOWNSELL_1` | Downsell1 — 6 bottles | kit1 |
-| `PLACEHOLDER_DG_DOWNSELL_2` | Downsell1 — 9 bottles | kit2 |
-| `PLACEHOLDER_DG_DOWNSELL_3` | Downsell1 — 12 bottles | kit3 |
-| `PLACEHOLDER_DG_DOWNSELL01` | Downsell01 — 6 bottles $174 ($29/pote) | `dg/vsl/downsell01` + `dg/dtc/downsell01` |
-| `PLACEHOLDER_DG_DOWNSELL02` | Downsell02 — 6 bottles $144 ($24/pote) | `dg/vsl/downsell02` + `dg/dtc/downsell02` |
-
-> Downsell2 usa só `answer/yes?template=light` (sem product id).
-
-### DigiStore — trusted badges
-
-| Placeholder | Onde |
-|-------------|------|
-| `PLACEHOLDER_DG_BADGE_SALES_ID` / `PLACEHOLDER_DG_BADGE_SALES_HASH` | Badge `salespage` (vsl, dtc, upsell1, downsell1, downsell2) |
-| `PLACEHOLDER_DG_BADGE_THANKYOU_ID` / `PLACEHOLDER_DG_BADGE_THANKYOU_HASH` | Badge `thankyoupage` (thankyou) |
+> As VSLs não têm player de vídeo (Vturb/ConverteAI removido); a oferta é exibida direto, sem gating. Não há trusted badges da Digistore nas páginas.
 
 ## Pendências de branding (não eram VSL/DigiStore)
 
