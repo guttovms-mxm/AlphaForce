@@ -34,6 +34,7 @@ assets/
   vendor/      # Bootstrap 5 vendorado (não-CDN) + fonts/ (Inter self-hosted, sem Google Fonts)
 _headers       # Security headers p/ Netlify/Cloudflare Pages (CSP enforced mínima + allowlist em Report-Only)
 vercel.json    # Mesmos headers p/ Vercel
+.htaccess      # Mesmos headers p/ Apache/LiteSpeed (Hostinger)
 index.html     # Redirect → /dg/dtc/
 ```
 

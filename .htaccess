@@ -1,0 +1,18 @@
+# Security headers for Apache / LiteSpeed hosting (e.g. Hostinger).
+# Mirrors _headers (Netlify/Cloudflare Pages) and vercel.json (Vercel).
+# CSP strategy: the ENFORCED policy carries only zero-breakage directives
+# (frame-ancestors / base-uri / object-src). The full resource allowlist
+# ships as Content-Security-Policy-Report-Only so it cannot break the live
+# Digistore24 / CartPanda checkout. Load the funnel end-to-end, confirm the
+# browser console reports no CSP violations, then move the Report-Only value
+# into Content-Security-Policy (and delete the Report-Only line).
+
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Content-Security-Policy "frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.digistore24-scripts.com https://*.digistore24.com https://assets.mycartpanda.com https://*.mycartpanda.com https://scripts.converteai.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.digistore24.com https://*.digistore24-scripts.com https://*.mycartpanda.com https://*.converteai.net https://*.vturb.com https://*.vturb.com.br; media-src 'self' blob: https://*.converteai.net; frame-src https://*.digistore24.com https://checkout-ds24.com https://*.checkout-ds24.com https://*.mycartpanda.com; form-action 'self' https://*.digistore24.com https://checkout-ds24.com https://*.checkout-ds24.com https://*.mycartpanda.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+</IfModule>
