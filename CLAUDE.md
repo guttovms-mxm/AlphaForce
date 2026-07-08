@@ -12,7 +12,7 @@ Site estático HTML/CSS/JS para **AlphaBull**. Sem build tools, sem framework, s
 
 ```
 dg/            # Funil DigiStore — vsl/ + dtc/ + thankyou, sem presell
-  vsl/         # Video Sales Letter (sem player) + assets locais (img/, css/)
+  vsl/         # Video Sales Letter (player VTurb/ConverteAI com gating) + assets locais (img/, css/)
     upsell01/  # Upsell pós-compra do funil VSL (12 potes — $348)
     downsell01/# Downsell 1 do funil VSL (6 potes — $174)
     downsell02/# Downsell 2 do funil VSL (6 potes — $144)
@@ -70,7 +70,7 @@ Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24
 - Afiliados usam os GET params `aff` (ID Digistore24) e `cam` (campanha) na página de vendas.
 - A thank-you tem nota explícita de que a cobrança aparece como **DIGISTORE24** na fatura (exigência da Digistore).
 
-> As VSLs não têm player de vídeo (Vturb/ConverteAI removido); a oferta é exibida direto, sem gating. Não há trusted badges da Digistore nas páginas.
+> A VSL do `dg/` (`dg/vsl`) tem player VTurb/ConverteAI (conta `92a9a37e-…`, player `6a450bbd…`) com **gating**: o `<main class="esconder">` fica oculto (`.esconder{display:none}`, style local na página) até o VTurb liberar o CTA no tempo configurado no painel. A VSL do CartPanda (`cpda/vsl/34u5n`) segue **sem** player. Domínios VTurb (`*.converteai.net`, `*.vturb.com`) estão no allowlist da CSP (Report-Only) em `_headers`/`vercel.json`. Não há trusted badges da Digistore nas páginas.
 
 ## Pendências de branding (não eram VSL/DigiStore)
 
