@@ -28,7 +28,7 @@ lgl/           # 7 páginas legais (privacy/terms/refund/shipping/disclaimer/ref
 assets/
   fav.png      # favicon 64px (usado via <link rel="icon"> em todas as páginas)
   shared/css/  # cb-main.css, internal-pages.css
-  shared/js/   # purchase-notifications.js (único script compartilhado)
+  shared/js/   # purchase-notifications.js + vturb.js (reveal do gating da VSL dg/)
   shared/products/  # bottles-{2,3,6,12}.webp + small versions (2/3/6) + label.webp + cards
   shared/img/  # guarantee-badge.webp
   vendor/      # Bootstrap 5 vendorado (não-CDN) + fonts/ (Inter self-hosted, sem Google Fonts)
@@ -70,7 +70,7 @@ Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24
 - Afiliados usam os GET params `aff` (ID Digistore24) e `cam` (campanha) na página de vendas.
 - A thank-you tem nota explícita de que a cobrança aparece como **DIGISTORE24** na fatura (exigência da Digistore).
 
-> A VSL do `dg/` (`dg/vsl`) tem player VTurb/ConverteAI (conta `92a9a37e-…`, player `6a450bbd…`) com **gating**: o `<main class="esconder">` fica oculto (`.esconder{display:none}`, style local na página) até o VTurb liberar o CTA no tempo configurado no painel. A VSL do CartPanda (`cpda/vsl/34u5n`) segue **sem** player. Domínios VTurb (`*.converteai.net`, `*.vturb.com`) estão no allowlist da CSP (Report-Only) em `_headers`/`vercel.json`. Não há trusted badges da Digistore nas páginas.
+> A VSL do `dg/` (`dg/vsl`) tem player VTurb/ConverteAI (conta `92a9a37e-…`, player `6a450bbd…`) com **gating**: o `<main class="esconder">` fica oculto (`.esconder{display:none}`, style local na página) até o `vturb.js` detectar o botão de CTA do VTurb (que aparece no tempo configurado no painel) e remover a classe `.esconder`. A VSL do CartPanda (`cpda/vsl/34u5n`) segue **sem** player. Domínios VTurb (`*.converteai.net`, `*.vturb.com`) estão no allowlist da CSP (Report-Only) em `_headers`/`vercel.json`. Não há trusted badges da Digistore nas páginas.
 
 ## Pendências de branding (não eram VSL/DigiStore)
 
@@ -84,6 +84,7 @@ Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24
 | Script | Função |
 |--------|--------|
 | `purchase-notifications.js` | Pop-ups de "compra recente" (nomes/locations randoms) injetados no fim do `<body>`; também decrementa os contadores `.stock` ("Quantity Remaining") das VSLs, partindo de 112. Usa paths absolutos (`/assets/...`) |
+| `vturb.js` | Reveal do gating da VSL `dg/vsl`: faz polling do `.smartplayer-anchor-button` (botão de CTA do VTurb) e, quando ele ganha tamanho real — no "pitch time" configurado **no painel do VTurb** —, remove a classe `.esconder`, exibindo a oferta. ⚠️ Sem CTA configurado no painel, a oferta nunca aparece |
 
 > Era documentado aqui um conjunto de scripts (`kits02.js`, `cpda-parameters.js`, `funnel-tracking.js`, `countdown.js`) herdado de outro projeto — nenhum deles existe neste repo. Não recriar sem necessidade.
 
