@@ -9,28 +9,13 @@
     right: 0;
     width: 187px;
     height: 162px;
-    background: url(../img/bolinhas-right.png) center center no-repeat;
+    background: url(../img/bolinhas-right.webp) center center no-repeat;
     opacity: 0.4;
 }
 
 #references h2 {
     font-size: 20px;
     color: rgb(159, 159, 159);
-}
-
-.logos {
-    max-width: 900px;
-    margin: 30px auto;
-}
-
-.logos img {
-    max-width: 130px;
-    height: auto;
-    object-fit: contain;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
 }
 
 #fbcomments {
@@ -137,30 +122,6 @@ img.hourglass {
     100% {
         transform: rotate(180deg)
     }
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(00deg)
-    }
-
-    100% {
-        transform: rotate(360deg)
-    }
-}
-
-.clock {
-    margin: 0 8px -5px 0;
-    display: inline-block;
-    animation: fade 1s ease-in-out infinite;
-}
-
-.triangle-down {
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 50px solid #555;
 }
 
 .triangle-down {
@@ -289,10 +250,5 @@ img.hourglass {
 
     #fbcomments {
         margin-top: 0px !important;
-    }
-
-    .logos img {
-        max-width: 90px;
-        margin-bottom: 10px;
     }
 }

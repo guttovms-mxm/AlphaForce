@@ -23,15 +23,17 @@ dg/            # Funil DigiStore — vsl/ + dtc/ + thankyou, sem presell
     downsell01/# Downsell 1 (6 potes — $174)
     downsell02/# Downsell 2 (6 potes — $144)
   thankyou/    # Thank-you page
-cpda/          # Funil CartPanda — réplica de dg/ sem Digistore24 (mesma estrutura)
+cpda/          # Funil CartPanda — réplica de dg/ sem Digistore24 (dtc/ + upsell1 + downsell1 + thankyou; a VSL real fica em cpda/vsl/34u5n/, /cpda/vsl/ é só redirect)
 lgl/           # 7 páginas legais (privacy/terms/refund/shipping/disclaimer/references/contact) — compartilhadas
 assets/
-  fav.png
+  fav.png      # favicon 64px (usado via <link rel="icon"> em todas as páginas)
   shared/css/  # cb-main.css, internal-pages.css
-  shared/js/   # purchase-notifications.js, countdown.js, kits02.js, cpda-parameters.js, funnel-tracking.js
+  shared/js/   # purchase-notifications.js (único script compartilhado)
   shared/products/  # bottles-{2,3,6,12}.webp + small versions (2/3/6) + label.webp + cards
   shared/img/  # guarantee-badge.webp
-  vendor/      # Bootstrap 5 vendorado (não-CDN)
+  vendor/      # Bootstrap 5 vendorado (não-CDN) + fonts/ (Inter self-hosted, sem Google Fonts)
+_headers       # Security headers p/ Netlify/Cloudflare Pages (CSP enforced mínima + allowlist em Report-Only)
+vercel.json    # Mesmos headers p/ Vercel
 index.html     # Redirect → /dg/dtc/
 ```
 
@@ -39,11 +41,10 @@ index.html     # Redirect → /dg/dtc/
 
 ### CartPanda — placeholders a preencher (em `cpda/`)
 
-`cpda/` não tem nenhum ID/script CartPanda real — preencher antes de publicar:
+Os checkout links dos kits principais já foram preenchidos com URLs reais (`mrx-group.mycartpanda.com/checkout/...`). Ainda faltam:
 
 | Placeholder | Onde | O que é |
 |-------------|------|---------|
-| `PLACEHOLDER_CP_CHECKOUT_KIT1/2/3` | `cpda/dtc` + `cpda/vsl` (`href` dos botões) | URL de checkout CartPanda por kit (2/3/6 potes) |
 | `PLACEHOLDER_CP_UPSELL_ACCEPT` / `PLACEHOLDER_CP_UPSELL_DECLINE` | `cpda/dtc/upsell1` | Links aceitar/recusar do upsell |
 | `PLACEHOLDER_CP_DOWNSELL_ACCEPT` / `PLACEHOLDER_CP_DOWNSELL_DECLINE` | `cpda/dtc/downsell1` | Links aceitar/recusar do downsell |
 | `PLACEHOLDER_CP_DESCRIPTOR` | `cpda/thankyou` (JS de cobrança) | Descritor da fatura (substitui o token `DIGISTORE24`) |
@@ -82,16 +83,16 @@ Não há mais placeholders em `dg/` — os IDs reais fornecidos pela Digistore24
 
 | Script | Função |
 |--------|--------|
-| `purchase-notifications.js` | Pop-ups de "compra recente" (nomes/locations randoms). Usa paths absolutos (`/assets/...`) |
-| `kits02.js` | Seleção de kit, persiste em localStorage |
-| `cpda-parameters.js` | Propaga query params da URL pros links de checkout |
-| `funnel-tracking.js` | Injeta funnel ID nas URLs de checkout |
-| `countdown.js` | Timer de countdown |
+| `purchase-notifications.js` | Pop-ups de "compra recente" (nomes/locations randoms) injetados no fim do `<body>`; também decrementa os contadores `.stock` ("Quantity Remaining") das VSLs, partindo de 112. Usa paths absolutos (`/assets/...`) |
+
+> Era documentado aqui um conjunto de scripts (`kits02.js`, `cpda-parameters.js`, `funnel-tracking.js`, `countdown.js`) herdado de outro projeto — nenhum deles existe neste repo. Não recriar sem necessidade.
 
 ## Padrões importantes
 
 - **Profundidade de path** importa: `dg/vsl/index.html` usa paths absolutos (`/assets/...`). Scripts compartilhados que injetam HTML usam path absoluto.
-- **Bootstrap 5** vendorado em `assets/vendor/bootstrap/` (não usar CDN).
+- **Bootstrap 5** vendorado em `assets/vendor/bootstrap/` (não usar CDN). O `bootstrap.bundle.min.js` só é carregado pelas **2 VSLs** (accordion do FAQ) — as demais páginas usam apenas o CSS. `bootstrap-icons.min.css` só nas páginas que têm ícones `bi-*` (páginas de venda + upsells).
+- **Fontes**: Inter self-hosted em `assets/vendor/fonts/` (`inter.css`) — não usar Google Fonts CDN.
+- **Favicon**: `<link rel="icon" type="image/png" href="/assets/fav.png">` em toda página nova.
 
 ## Deploy
 
