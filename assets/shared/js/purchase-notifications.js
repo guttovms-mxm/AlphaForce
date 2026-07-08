@@ -20,6 +20,13 @@ const purchaseNotificationHTML = `
 `;
 document.body.insertAdjacentHTML('beforeend', purchaseNotificationHTML);
 
+// Prefetch das imagens do popup depois da janela de carregamento crítica (primeiro popup em t=12s)
+setTimeout(function () {
+	[3, 6].forEach(function (n) {
+		new Image().src = '/assets/shared/products/bottles-' + n + '-sm.webp';
+	});
+}, 5000);
+
 function bottlesBuying() {
 	const randName = cNames[Math.floor(Math.random() * cNames.length)];
 	const randLocal = cLocals[Math.floor(Math.random() * cLocals.length)];
