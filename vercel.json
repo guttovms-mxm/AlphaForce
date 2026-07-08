@@ -1,0 +1,17 @@
+{
+  "$comment": "Security headers for Vercel static hosting — mirrors _headers (Netlify/Cloudflare Pages). CSP is split: the enforced policy carries only zero-breakage directives; the full allowlist ships as Content-Security-Policy-Report-Only so it cannot break the live Digistore24/CartPanda checkout. After confirming no CSP violations in the console on the live funnel, move the Report-Only value into Content-Security-Policy and remove the Report-Only header.",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'none'; base-uri 'self'; object-src 'none'" },
+        { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.digistore24-scripts.com https://*.digistore24.com https://assets.mycartpanda.com https://*.mycartpanda.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.digistore24.com https://*.digistore24-scripts.com https://*.mycartpanda.com; frame-src https://*.digistore24.com https://checkout-ds24.com https://*.checkout-ds24.com https://*.mycartpanda.com; form-action 'self' https://*.digistore24.com https://checkout-ds24.com https://*.checkout-ds24.com https://*.mycartpanda.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'" }
+      ]
+    }
+  ]
+}

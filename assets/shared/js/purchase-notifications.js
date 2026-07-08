@@ -1,7 +1,7 @@
 // Bottles Bought
-var stockNumber = 250;
+var stockNumber = 112;
 const cNames = ['Jessica', 'James', 'Maria', 'Robert', 'Naomi', 'Samantha', 'Giulia', 'Joseph', 'Emmily', 'Daniel'];
-const cLocals = ['California', 'Ohio', 'Pennsylvania', 'Michigan', 'Illinois', 'North Caroline', 'Georgia', 'Florida', 'Texas'];
+const cLocals = ['California', 'Ohio', 'Pennsylvania', 'Michigan', 'Illinois', 'North Carolina', 'Georgia', 'Florida', 'Texas'];
 const tBottles = [3, 6, 6];
 
 const purchaseNotificationHTML = `
@@ -9,9 +9,7 @@ const purchaseNotificationHTML = `
 <div id="purchase-notifications" class="purchases-disclaimer">
   <div class="purchases-box">
 	<div class="purchased-bottle">
-	  <img id="one-bottle" src="/assets/shared/products/bottles-2-sm.webp" style="display: none;">
-	  <img id="three-bottles" src="/assets/shared/products/bottles-3-sm.webp" style="display: none;">
-	  <img id="six-bottles" src="/assets/shared/products/bottles-6-sm.webp" style="display: none;">
+	  <img id="purchased-bottle-img" alt="">
 	</div>
 	<div class="purchase-info">
 	  <span id="customer-name"></span> in <span id="customer-location"></span> just bought <span id="items-purchased"></span>!
@@ -22,40 +20,22 @@ const purchaseNotificationHTML = `
 `;
 document.body.insertAdjacentHTML('beforeend', purchaseNotificationHTML);
 
+// Prefetch das imagens do popup depois da janela de carregamento crítica (primeiro popup em t=12s)
+setTimeout(function () {
+	[3, 6].forEach(function (n) {
+		new Image().src = '/assets/shared/products/bottles-' + n + '-sm.webp';
+	});
+}, 5000);
+
 function bottlesBuying() {
-	const esconderDiv = document.querySelector('.esconder');
-
-	// Se a div existe e está escondida, sai da função
-	if (esconderDiv && window.getComputedStyle(esconderDiv).display === 'none') {
-		return;
-	}
-
 	const randName = cNames[Math.floor(Math.random() * cNames.length)];
 	const randLocal = cLocals[Math.floor(Math.random() * cLocals.length)];
 	const randBottle = tBottles[Math.floor(Math.random() * tBottles.length)];
 
-	const oneBottle = document.querySelector('#one-bottle');
-	const threeBottles = document.querySelector('#three-bottles');
-	const sixBottles = document.querySelector('#six-bottles');
-
 	stockNumber -= randBottle;
 
-	if (randBottle === 3) {
-		oneBottle.style.display = 'none';
-		threeBottles.style.display = 'block';
-		sixBottles.style.display = 'none';
-		document.querySelector('#items-purchased').innerHTML = randBottle + ' bottles';
-	} else if (randBottle === 6) {
-		oneBottle.style.display = 'none';
-		threeBottles.style.display = 'none';
-		sixBottles.style.display = 'block';
-		document.querySelector('#items-purchased').innerHTML = randBottle + ' bottles';
-	} else {
-		oneBottle.style.display = 'block';
-		threeBottles.style.display = 'none';
-		sixBottles.style.display = 'none';
-		document.querySelector('#items-purchased').innerHTML = randBottle + ' bottle';
-	}
+	document.querySelector('#purchased-bottle-img').src = '/assets/shared/products/bottles-' + randBottle + '-sm.webp';
+	document.querySelector('#items-purchased').innerHTML = randBottle + ' bottles';
 
 	document.querySelectorAll('.stock').forEach(e => e.innerHTML = stockNumber);
 	document.querySelector('#customer-name').innerHTML = randName;

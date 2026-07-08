@@ -12,18 +12,15 @@
 	<meta property="og:image" name="image" content="https://alphabull.shop/assets/shared/products/bottles-2.webp">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="/assets/fav.png">
 	<meta name="referrer" content="no-referrer">
 
-	<!-- GoogleFonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-	<!-- END GoogleFonts -->
+	<!-- Fonts (self-hosted Inter) -->
+	<link rel="stylesheet" type="text/css" href="../../assets/vendor/fonts/inter.css">
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap/bootstrap.purged.min.css">
 	<link rel="stylesheet" type="text/css" href="../../assets/vendor/bootstrap/bootstrap-icons.min.css">
-	<script type="text/javascript" src="../../assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
 	<!-- END Bootstrap -->
 
 	<!-- Main Styles -->
@@ -54,7 +51,6 @@
 
 	<!-- Main Scripts -->
 	<script type="text/javascript" src="../../assets/shared/js/purchase-notifications.js" defer></script>
-	<script type="text/javascript" src="../../assets/shared/js/countdown.js" defer></script>
 	<!-- Main Scripts -->
 
 
@@ -66,7 +62,7 @@
 
 
 </head>
-<body id="dtc" class="digistore" data-funnel="dtcfunnel">
+<body id="dtc" class="digistore">
 
 	<!-- Header -->
 	<header id="steps" class="pt-4" style="background-image: linear-gradient(45deg, var(--primary-color-light), var(--primary-color)); padding-bottom: 6rem;">
@@ -117,7 +113,7 @@
 							</div>
 							<div class="item-buy">
 								<div class="button"><span>Buy Now</span></div>
-								<img src="../../assets/shared/products/cards-dark.webp" alt="Cards" class="card-flags">
+								<img loading="lazy" decoding="async" src="../../assets/shared/products/cards-dark.webp" alt="Cards" class="card-flags">
 							</div>
 							<div class="item-totals">
 								<div class="totals">Total: <s>$1074</s> <b>$294</b></div>
@@ -135,7 +131,7 @@
 							<div class="item-header">Most Popular</div>
 							<div class="item-img">
 								<div class="supply"><b>3 BOTTLES</b>90 DAY SUPPLY</div>
-								<img src="../../assets/shared/products/bottles-3.webp" alt="3 Bottles">
+								<img loading="lazy" decoding="async" src="../../assets/shared/products/bottles-3.webp" alt="3 Bottles">
 							</div>
 							<div class="item-info">
 								<div class="price">
@@ -149,7 +145,7 @@
 							</div>
 							<div class="item-buy">
 								<div class="button"><span>Buy Now</span></div>
-								<img src="../../assets/shared/products/cards.webp" alt="Cards" class="card-flags">
+								<img loading="lazy" decoding="async" src="../../assets/shared/products/cards.webp" alt="Cards" class="card-flags">
 							</div>
 							<div class="item-totals">
 								<div class="totals">Total: <s>$537</s> <b>$207</b></div>
@@ -167,7 +163,7 @@
 							<div class="item-header">Basic</div>
 							<div class="item-img">
 								<div class="supply"><b>2 BOTTLES</b>60 DAY SUPPLY</div>
-								<img src="../../assets/shared/products/bottles-2.webp" alt="2 Bottles">
+								<img loading="lazy" decoding="async" src="../../assets/shared/products/bottles-2.webp" alt="2 Bottles">
 							</div>
 							<div class="item-info">
 								<div class="price">
@@ -181,7 +177,7 @@
 							</div>
 							<div class="item-buy">
 								<div class="button"><span>Buy Now</span></div>
-								<img src="../../assets/shared/products/cards.webp" alt="Cards" class="card-flags">
+								<img loading="lazy" decoding="async" src="../../assets/shared/products/cards.webp" alt="Cards" class="card-flags">
 							</div>
 							<div class="item-totals">
 								<div class="totals">Total: <s>$358</s> <b>$158</b></div>
@@ -204,7 +200,7 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<div class="col-12 col-md-3 guarantee-badge-col">
-						<figure><img src="/assets/shared/img/guarantee-badge.webp" alt="Guarantee"></figure>
+						<figure><img loading="lazy" decoding="async" src="/assets/shared/img/guarantee-badge.webp" alt="Guarantee"></figure>
 					</div>
 					<div class="col-12 col-md-9">
 						<h2 class="mb-3">100% Satisfaction or Your Money Back<span>60-Day Money-Back Guarantee</span></h2>
@@ -215,26 +211,11 @@
 		</section>
 	<!-- Guarantee -->
 
-	<!-- Purchase Notifications -->
-	<div id="purchase-notifications" class="purchases-disclaimer">
-		<div class="purchases-box">
-			<div class="purchased-bottle">
-				<img id="one-bottle" src="../../assets/shared/products/bottles-2-sm.webp" style="display: none;">
-				<img id="three-bottles" src="../../assets/shared/products/bottles-3-sm.webp" style="display: none;">
-				<img id="six-bottles" src="../../assets/shared/products/bottles-6-sm.webp" style="display: none;">
-			</div>
-			<div class="purchase-info">
-				<span id="customer-name"></span> in <span id="customer-location"></span> just bought <span id="items-purchased"></span>!
-			</div>
-		</div>
-	</div>
-	<!-- END Purchase Notifications -->
-
 	<!-- Footer CB -->
 	<footer class="text-center py-4 py-md-5" style="background-color: var(--primary-color-dark);">
 		<div class="container text-white text-center" style="max-width: 1100px;">
 			<figure class="pb-4">
-				<img src="../../assets/shared/products/label.webp" alt="AlphaBull Supplement Label" class="img-fluid" style="max-width: 700px; border-radius: 8px;">
+				<img loading="lazy" decoding="async" src="../../assets/shared/products/label.webp" alt="AlphaBull Supplement Label" class="img-fluid" style="max-width: 700px; border-radius: 8px;">
 			</figure>
 			<ul class="list-inline small mb-4">
 				<li class="list-inline-item"><a class="link-light text-decoration-none" href="../../lgl/privacy-policy" target="_blank">PRIVACY</a></li>
